@@ -7,7 +7,7 @@ public class Home : MonoBehaviour
     void Start()
     {
         // hidden banner (banner only show on Game Play scene)
-        GoogleMobileAdsScript.advertise.HideBanner();
+//        GoogleMobileAdsScript.advertise.HideBanner();
         MusicController.Music.BG_menu();
     }
 

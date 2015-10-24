@@ -137,7 +137,6 @@ public class Timer : MonoBehaviour
         EffectSpawner.effect.SetScore(PLayerInfo.Info.Score);
         StartCoroutine(DisableAll());
         SoundController.Sound.Lose();
-        showFullAds();
         Debug.Log("LOSE");
     }
     public void Pause()
@@ -217,23 +216,12 @@ public class Timer : MonoBehaviour
         GameController.action.JewelStar.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
         WinUI.SetActive(true);
-        showFullAds();
     }
-
-    void showFullAds()
-    {
-        if (isAds)
-        {
-            GoogleMobileAdsScript.advertise.ShowInterstitial();
-            isAds = false;
-            isreq = false;
-        }
-    }
+		
 
     IEnumerator UpLevel()
     {
         DisableJewel(true);
-        showFullAds();
         yield return new WaitForSeconds(1f);
         ButtonActionController.Click.ClassicScene(PLayerInfo.MapPlayer.Level + 1);
     }

@@ -50,7 +50,7 @@ public class PlayerUtils
 
         dataSplit = data.Split(',');
 
-        for (int i = 0; i < 297; i++)
+        for (int i = 0; i < 50; i++)
         {
             p = new Player();
             p.Level = i + 1;

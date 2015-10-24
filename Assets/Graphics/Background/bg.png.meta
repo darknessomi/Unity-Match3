@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 010e3dc602bc16d4ea1b3bc4ffce4259
+guid: 0d3350803e684ad46a52c67b6b5103c0
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
@@ -25,7 +25,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 256
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -48,7 +48,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: Jewel
+  spritePackingTag: 
   userData: 
   assetBundleName: 
   assetBundleVariant: 
