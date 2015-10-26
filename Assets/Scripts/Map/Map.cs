@@ -70,5 +70,8 @@ public class Map : MonoBehaviour
                 star[i].sprite = DataLoader.Data.MapSprite[3];
             }
         }
+		star[0].transform.position = star[0].transform.position + new Vector3(0, -0.73f, 0);
+		star[1].transform.position = star[1].transform.position + new Vector3(0, -0.73f, 0);
+		star[2].transform.position = star[2].transform.position + new Vector3(0, -0.73f, 0);
     }
 }

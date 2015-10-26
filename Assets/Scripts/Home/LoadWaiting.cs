@@ -5,6 +5,8 @@ public class LoadWaiting : MonoBehaviour
 {
 
     public UnityEngine.UI.Image loadbar;    // Image loading fake
+	public static string LoadScene = "HomeScene";
+	public AsyncOperation async;
 
     /// <summary>
     /// fill image by second and go to Home scene
@@ -12,11 +14,13 @@ public class LoadWaiting : MonoBehaviour
     /// <returns></returns>
     IEnumerator Start()
     {
-        for (int i = 0; i < 120; i++)
+        for (int i = 0; i < 60; i++)
         {
-            loadbar.fillAmount += 1 / 120f;
+            loadbar.fillAmount += 1 / 60f;
             yield return new WaitForEndOfFrame();
         }
-        Application.LoadLevel("HomeScene");
+//		Application.LoadLevel(LoadScene);
+		async = Application.LoadLevelAsync(LoadScene);
+		yield return async;
     }
 }

@@ -17,8 +17,6 @@ public class CameraMovement : MonoBehaviour
 
     public Sprite[] star;                       // arrays star of item level
 
-    public GameObject fade;                     // fade animation
-
     float distance = 90.8f / 8680f;
 
     public static bool movement;
@@ -40,7 +38,6 @@ public class CameraMovement : MonoBehaviour
     {
         setLastpos();
         SetPoint();
-//        GoogleMobileAdsScript.advertise.HideBanner();
     }
 
     void Update()
@@ -64,7 +61,7 @@ public class CameraMovement : MonoBehaviour
         if (lastp < 0) lastp = 0;
         else if (lastp > 90.8000f) lastp = 90.8f;
         transform.position += new Vector3(0, lastp);
-        container.anchoredPosition = new Vector2(container.anchoredPosition.x, -lastp / distance + 4740f);
+        container.anchoredPosition = new Vector2(container.anchoredPosition.x, -lastp / distance + 2250f);
     }
 
     void SetPoint()
@@ -80,7 +77,7 @@ public class CameraMovement : MonoBehaviour
     /// </summary>
     public void CameraPosUpdate()
     {
-        transform.position = new Vector3(transform.position.x, -(container.anchoredPosition.y - 4740f) * distance, transform.position.z);
+        transform.position = new Vector3(transform.position.x, -(container.anchoredPosition.y - 2250f) * distance, transform.position.z);
         if (setstate)
             movement = true;
     }
@@ -123,7 +120,6 @@ public class CameraMovement : MonoBehaviour
     public void FreezeMap()
     {
         DataLoader.enableclick = false;
-        fade.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
     public void UnfreezeMap()
@@ -132,7 +128,6 @@ public class CameraMovement : MonoBehaviour
         PopUp.SetActive(false);
         isPopup = false;
         DataLoader.enableclick = true;
-        fade.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
     }
 

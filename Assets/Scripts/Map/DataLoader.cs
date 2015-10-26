@@ -27,11 +27,9 @@ public class DataLoader : MonoBehaviour
 
     public GameObject[] listmap;
 
-    public Vector2[] mappos = new Vector2[50];
+    public Vector2[] mappos = new Vector2[40];
 
     public UnityEngine.UI.Image processbar;
-
-    public GameObject fade;
 
     public Sprite[] MapSprite;
 
@@ -48,7 +46,7 @@ public class DataLoader : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        listmap = new GameObject[50];
+        listmap = new GameObject[40];
         //PlayerPrefs.DeleteKey(KEY_FRISTTIME);
         if (PlayerPrefs.GetInt(KEY_FRISTTIME, 0) == 0)
         {
@@ -91,17 +89,17 @@ public class DataLoader : MonoBehaviour
         Debug.Log("2");
         yield return new WaitForSeconds(0.3f);
 
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < 20; i++)
         {
-            processbar.fillAmount += 0.0016835016835017f * 3;
+            processbar.fillAmount += 0.0016834016834017f * 3;
             insmap(mappos[i], i);
-            insmap(mappos[i + 25], i + 25);
+            insmap(mappos[i + 20], i + 20);
             yield return null;
         }
         Debug.Log("3");
         processbar.transform.parent.gameObject.SetActive(false);
         DataLoader.enableclick = true;
-        if (CameraMovement.StarPointMoveIndex != -1 && CameraMovement.StarPointMoveIndex != 50)
+        if (CameraMovement.StarPointMoveIndex != -1 && CameraMovement.StarPointMoveIndex != 40)
         {
             StarPointMove();
             yield return new WaitForSeconds(STARMOVE_TIME);
@@ -113,7 +111,6 @@ public class DataLoader : MonoBehaviour
         }
         else
         {
-            fade.GetComponent<CanvasGroup>().blocksRaycasts = false;
             CameraMovement.mcamera.StarPoint.transform.GetChild(0).GetComponent<Animation>().Play("StarPoint");
         }
     }
@@ -145,7 +142,7 @@ public class DataLoader : MonoBehaviour
     void StarPointMove()
     {
         DataLoader.enableclick = false;
-        Vector3 newpos = listmap[CameraMovement.StarPointMoveIndex].transform.position + new Vector3(0, 0, -0.3f);
+        Vector3 newpos = listmap[CameraMovement.StarPointMoveIndex].transform.position + new Vector3(-0.05f, -0.2f, -0.3f);
         Ulti.MoveTo(CameraMovement.mcamera.StarPoint, newpos, STARMOVE_TIME, newpos.z);
         StartCoroutine(stopanimation());
     }
@@ -164,105 +161,85 @@ public class DataLoader : MonoBehaviour
     void MapPosD()
     {
 
-        mappos[0] = new Vector2(-0.004228723f, -3.587f);
+        mappos[0] = new Vector2(-0.66f, -1.06f);
 
-        mappos[1] = new Vector2(0.695f, -3.232f);
+        mappos[1] = new Vector2(0.42f, -0.67f);
 
-        mappos[2] = new Vector2(-0.09021276f, -3.03f);
+        mappos[2] = new Vector2(-0.53f, 0.57f);
 
-        mappos[3] = new Vector2(-0.925f, -2.859967f);
+        mappos[3] = new Vector2(0.42f, 0.94f);
 
-        mappos[4] = new Vector2(-0.188883f, -2.489f);
+        mappos[4] = new Vector2(-0.66f, 2.08f);
 
-        mappos[5] = new Vector2(0.6173936f, -2.367f);
+        mappos[5] = new Vector2(0.16f, 2.52f);
 
-        mappos[6] = new Vector2(1.342f, -2f);
+        mappos[6] = new Vector2(-0.94f, 5.02f);
 
-        mappos[7] = new Vector2(0.5240414f, -1.590361f);
+        mappos[7] = new Vector2(0.13f, 5.29f);
 
-        mappos[8] = new Vector2(-0.2140727f, -1.613735f);
+        mappos[8] = new Vector2(-0.84f, 6.51f);
 
-        mappos[9] = new Vector2(-1.06f, -1.636f);
+        mappos[9] = new Vector2(0.63f, 7.32f);
 
-        mappos[10] = new Vector2(-1.579f, -1.265327f);
+        mappos[10] = new Vector2(-0.02f, 8.66f);
 
-        mappos[11] = new Vector2(-1.274f, -0.7695142f);
+        mappos[11] = new Vector2(-0.02f, 10.59f);
 
-        mappos[12] = new Vector2(-0.8071734f, 0.4705882f);
+        mappos[12] = new Vector2(0.98f, 11f);
 
-        mappos[13] = new Vector2(-0.9679077f, 1f);
+        mappos[13] = new Vector2(-1.01f, 13.49f);
 
-        mappos[14] = new Vector2(-1.731092f, 1.497479f);
+        mappos[14] = new Vector2(0.62f, 13.88f);
 
-        mappos[15] = new Vector2(-0.9021276f, 1.77f);
+        mappos[15] = new Vector2(-0.69f, 15.09f);
 
-        mappos[16] = new Vector2(-0.05638298f, 1.736f);
+        mappos[16] = new Vector2(0.16f, 15.53f);
 
-        mappos[17] = new Vector2(0.7893617f, 1.752f);
+        mappos[17] = new Vector2(-0.11f, 17.07f);
 
-        mappos[18] = new Vector2(1.557f, 1.98f);
+        mappos[18] = new Vector2(0.72f, 17.33f);
 
-        mappos[19] = new Vector2(1.307f, 2.653f);
+        mappos[19] = new Vector2(-0.73f, 21.15f);
 
-        mappos[20] = new Vector2(0.439f, 2.86f);
+        mappos[20] = new Vector2(0f, 21.18f);
 
-        mappos[21] = new Vector2(-0.271578f, 2.98f);
+        mappos[21] = new Vector2(-0.73f, 22.61f);
 
-        mappos[22] = new Vector2(-0.9669681f, 3.106f);
+        mappos[22] = new Vector2(0.3f, 22.90f);
 
-        mappos[23] = new Vector2(-1.39f, 3.66f);
+        mappos[23] = new Vector2(-0.26f, 24.54f);
 
-        mappos[24] = new Vector2(-0.8239896f, 4.221f);
+        mappos[24] = new Vector2(0.3f, 24.6f);
 
-        mappos[25] = new Vector2(-1f, 4.758f);
+        mappos[25] = new Vector2(1.4f, 25.29f);
 
-        mappos[26] = new Vector2(-1.562f, 5.279f);
+        mappos[26] = new Vector2(0.88f, 27.09f);
 
-        mappos[27] = new Vector2(-0.996f, 5.581f);
+        mappos[27] = new Vector2(0.2f, 26.88f);
 
-        mappos[28] = new Vector2(-0.2349291f, 5.59f);
+        mappos[28] = new Vector2(-0.7f, 29.08f);
 
-        mappos[29] = new Vector2(0.4792553f, 5.6f);
+        mappos[29] = new Vector2(0.24f, 29.54f);
 
-        mappos[30] = new Vector2(1.184042f, 5.72f);
+        mappos[30] = new Vector2(-0.48f, 30.86f);
 
-        mappos[31] = new Vector2(1.631163f, 6.270145f);
+        mappos[31] = new Vector2(0.12f, 31f);
 
-        mappos[32] = new Vector2(1.090071f, 6.87f);
+        mappos[32] = new Vector2(-0.4f, 32.5f);
 
-        mappos[33] = new Vector2(0.3523936f, 7.128f);
+        mappos[33] = new Vector2(0.63f, 33.13f);
 
-        mappos[34] = new Vector2(-0.3636702f, 7.196f);
+        mappos[34] = new Vector2(0.72f, 34.84f);
 
-        mappos[35] = new Vector2(-1.067f, 7.494f);
+        mappos[35] = new Vector2(0f, 34.5f);
 
-        mappos[36] = new Vector2(-0.963f, 8.204f);
+        mappos[36] = new Vector2(0.63f, 37.67f);
 
-        mappos[37] = new Vector2(-0.601f, 8.72f);
+        mappos[37] = new Vector2(-0.2f, 37.3f);
 
-        mappos[38] = new Vector2(0.017f, 9.103f);
+        mappos[38] = new Vector2(-0.12f, 39.1f);
 
-        mappos[39] = new Vector2(0.5887378f, 9.264387f);
-
-        mappos[40] = new Vector2(1.207f, 9.45f);
-
-        mappos[41] = new Vector2(1.583f, 9.921f);
-
-        mappos[42] = new Vector2(0.9122202f, 10.28887f);
-
-        mappos[43] = new Vector2(0.3170127f, 10.39903f);
-
-        mappos[44] = new Vector2(-0.3274053f, 10.45336f);
-
-        mappos[45] = new Vector2(-0.9444384f, 10.69456f);
-
-        mappos[46] = new Vector2(-1.259f, 11.225f);
-
-        mappos[47] = new Vector2(-1.013f, 11.708f);
-
-        mappos[48] = new Vector2(-0.62f, 12.499f);
-
-        mappos[49] = new Vector2(-0.173f, 12.927f);
+        mappos[39] = new Vector2(0.63f, 39.22f);
 
     }
     #endregion

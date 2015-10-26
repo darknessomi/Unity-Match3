@@ -10,15 +10,12 @@ public class EffectSpawner : MonoBehaviour
 
     public GameObject[] EffectPrefabs;
 
-    public Animator redglass;
-
     public GameObject[,] JewelCrashArray;
     public GameObject JewelCrashParent;
 
     public UnityEngine.UI.Text level;
     public UnityEngine.UI.Text best;
     public UnityEngine.UI.Text Score;
-    public UnityEngine.UI.Image Energy;
 
     public float REFRESH_COMBO_TIME = 2f;
 
@@ -41,10 +38,6 @@ public class EffectSpawner : MonoBehaviour
     private int PowerCount = 0;
 
     public float ComboCountdown;
-
-    float EnergyStack = 0;
-
-    bool isEnergyInc;
 
     void Awake()
     {
@@ -90,14 +83,10 @@ public class EffectSpawner : MonoBehaviour
     {
         ThunderCount++;
         PowerCount++;
-        EnergyStack += 1 / 21f;
-        EnergyInc();
         if (ThunderCount >= 21)
         {
             GameController.action.DestroyRandom();
             ThunderCount = 0;
-            Energy.fillAmount = 0;
-            EnergyStack = 0;
         }
         if (PowerCount >= 32)
         {
@@ -105,29 +94,7 @@ public class EffectSpawner : MonoBehaviour
             GameController.action.isAddPower = true;
         }
     }
-
-    private void EnergyInc()
-    {
-        if (!isEnergyInc)
-            StartCoroutine(IEEnergyInc());
-    }
-
-    IEnumerator IEEnergyInc()
-    {
-        // Debug.Log (Energy.gameObject.transform.position);
-        isEnergyInc = true;
-        float d = 1 / 210f;
-        while (EnergyStack > 0)
-        {
-            Energy.fillAmount += d;
-            EnergyStack -= d;
-            yield return null;
-            if (Energy.fillAmount == 1)
-                Energy.fillAmount = 0;
-        }
-        EnergyStack = 0;
-        isEnergyInc = false;
-    }
+		
 
     private void ScoreEff(int score, Vector3 pos)
     {
@@ -170,7 +137,7 @@ public class EffectSpawner : MonoBehaviour
         //tmp.transform.position = new Vector3 (pos.x,pos.y,-2.1f);
         //Destroy(tmp, THUNDER_TIME);
 
-        MGE(Energy.transform.position, pos, -0.4f);
+		//MGE(Energy.transform.position, pos, -0.4f);
     }
 
     public void boom(Vector3 pos)
@@ -307,14 +274,6 @@ public class EffectSpawner : MonoBehaviour
         GameObject tmp = MGE(pos, target);
         tmp.transform.position += new Vector3(pos.x, pos.y, z);
         return tmp;
-    }
-
-    public void glass()
-    {
-        if (PLayerInfo.MODE == 1)
-            redglass.enabled = true;
-        //redglass.Play("glass");
-        //Debug.Log("bla");
     }
 
     public void MiniStar(Vector3 startpos)

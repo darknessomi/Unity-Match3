@@ -54,8 +54,12 @@ public class ButtonActionController : MonoBehaviour
     public void SelectMap(int mode)
     {
         SoundController.Sound.Click();
-        if (mode == 1)
-            Application.LoadLevel("MapScene");
+		if (mode == 1) {
+			LoadWaiting.LoadScene = "MapScene";
+			Application.LoadLevel("LoadingScene");
+		}
+//            Application.LoadLevel("MapScene");
+
         else
             HomeScene();
 

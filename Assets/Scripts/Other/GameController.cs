@@ -258,7 +258,6 @@ public class GameController : MonoBehaviour
     void DestroyJewel(List<JewelObj> list)
     {
         SoundController.Sound.JewelCrash();
-        EffectSpawner.effect.glass();
         foreach (var item in list)
         {
             item.Destroy();
@@ -267,7 +266,6 @@ public class GameController : MonoBehaviour
     void ReGroup(List<JewelObj> list, int type, int power, Vector2 pos)
     {
         SoundController.Sound.JewelCrash();
-        EffectSpawner.effect.glass();
         foreach (var item in list)
         {
             item.ReGroup(pos);
